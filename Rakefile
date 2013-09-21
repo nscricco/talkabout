@@ -1,2 +1,2 @@
 require 'sinatra/activerecord/rake'
-require_relative 'app/configß'
+require_relative 'app/config'
