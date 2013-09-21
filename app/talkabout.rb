@@ -1,1 +1,2 @@
-require_relative 'config'
+require 'sinatra'
+require_relative './config'

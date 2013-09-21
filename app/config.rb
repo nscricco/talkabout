@@ -1,11 +1,12 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require_relative 'talkabout.rb'
 
 if settings.test?
-	set :database, 'sqlite3///db/talkabout'
+	set :database, 'sqlite3:///db/talkabout'
 else
 	configure :development do
-		set :database, 'sqlite3///mydb.sqlite3'
+		set :database, 'sqlite3:///mydb.sqlite3'
 	end
 
 	configure :production do
