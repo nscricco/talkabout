@@ -1,3 +1,3 @@
-require_relative 'app/talkabout'
+require './app/talkabout'
 
 run Sinatra::Application
