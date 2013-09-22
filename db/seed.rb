@@ -31,7 +31,7 @@ end
 seeder = Seed.new
 
 users = []
-20.times { users << seeder.create_user }
+60.times { users << seeder.create_user }
 30.times do
 	topic = seeder.create_topic(users.sample)
 	5.times { seeder.create_comment(users.sample, topic) }
