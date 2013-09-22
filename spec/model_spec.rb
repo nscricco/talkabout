@@ -61,15 +61,15 @@ describe 'Comment' do
 
 	it 'should be invalid without a topic' do
 		comment = Comment.create(body: 'body', user: user)
-		expect(topic).not_to be_valid
+		expect(comment).not_to be_valid
 	end
 	it 'should be invalid without a body' do
 		comment = Comment.create(topic: topic, user: user)
-		expect(topic).not_to be_valid
+		expect(comment).not_to be_valid
 	end
 	it 'should be invalid without a user' do
 		comment = Comment.create(body: 'body', topic: topic)
-		expect(topic).not_to be_valid
+		expect(comment).not_to be_valid
 	end
 	it 'should be valid with a topic, body, and user' do
 		comment = Comment.create(body: 'body', topic: topic, user: user)
@@ -81,7 +81,19 @@ describe 'Comment' do
 end
 
 describe 'Sub-Comment' do
-	it 'should be invalid without a user'
-	it 'should be invalid without a parent comment'
+	include Spec
+
+	user = User.create(email: 'test@gmail.com', password: 'pass')
+	topic = Topic.create(title: 'title', body: 'body', user: user)
+	parent_comment = Comment.create(body: 'parent comment body', topic: topic, user: user)
+
+	it 'should refer to a parent comment' do
+		comment = Comment.create(body: 'body', topic: topic, user: user, comment: parent_comment)
+		expect(comment.comment.body).to include 'parent comment body'
+	end
+
+	User.destroy_all
+	Topic.destroy_all
+	Comment.destroy_all
 end
 
