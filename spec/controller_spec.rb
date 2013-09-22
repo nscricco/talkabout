@@ -25,9 +25,10 @@ end
 describe 'Topic Page' do
 	include Spec
 
-	let!(:user) {User.create(email: 'test@gmail.com', password: 'pass')}
-	let!(:topic) {Topic.create(title: 'title', body: 'topic_body', user: user)}
-	let!(:comment) {Comment.create(body: 'comment_body', topic: topic, user: user)}
+	let!(:topic_user) {User.create(email: 'test@gmail.com', password: 'pass')}
+	let!(:topic) {Topic.create(title: 'title', body: 'topic_body', user: topic_user)}
+	let!(:comment_user) {User.create(firstname: 'John', email: 'JohnDoe@gmail.com', password: 'pass')}
+	let!(:comment) {Comment.create(body: 'comment_body', topic: topic, user: comment_user)}
 
 	it 'should load' do
 		get "topic/#{topic.title}"
@@ -44,5 +45,9 @@ describe 'Topic Page' do
 	it 'should display all comments' do
 		get "topic/#{topic.title}"
 		expect(last_response.body).to include comment.body
+	end
+	it 'should display the comment author' do
+		get "topic/#{topic.title}"
+		expect(last_response.body).to include comment.user.name
 	end
 end
