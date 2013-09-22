@@ -25,3 +25,23 @@ describe 'Homepage' do
 	Topic.destroy_all
 	Comment.destroy_all
 end
+
+describe 'Topic Page' do
+	include Spec
+
+	let!(:user) {User.create(email: 'test@gmail.com', password: 'pass')}
+	let!(:topic) {Topic.create(title: 'title', body: 'body', user: user)}
+
+	it 'should load' do
+		get "topic/#{topic.title}"
+		last_response.should be_ok
+	end
+	it 'should display the body' do
+		get "topic/#{topic.title}"
+		expect(last_response.body).to include topic.body
+	end
+
+	User.destroy_all
+	Topic.destroy_all
+	Comment.destroy_all
+end
