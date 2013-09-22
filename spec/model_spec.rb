@@ -26,7 +26,26 @@ end
 describe 'Topic' do
 	include Spec
 
+	user = User.create(email: 'test@gmail.com', password: 'pass')
+
 	it 'should be invalid without a title' do
-		
+		topic = Topic.create
+		expect(topic).not_to be_valid
+	end
+	it 'should be invalid without a body' do
+		topic = Topic.create
+		expect(topic).not_to be_valid
+	end
+	it 'should be invalid without a user' do
+		topic = Topic.create
+		expect(topic).not_to be_valid
+	end
+	it 'should be valid with a title, body, and user' do
+		topic = Topic.create(title: 'title', body: 'body', user: user)
+		expect(topic).to be_valid
+	end
+	it 'should be associated with one user' do
+		topic = Topic.create(title: 'title', body: 'body', user: user)
+		expect(topic.user.email).to include 'test@gmail.com'
 	end
 end
