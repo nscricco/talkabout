@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
 	validates_presence_of :email, :password
 
 	def name
-		"#{firstname} #{lastname}"
+		firstname.nil? && lastname.nil? ? "anonymous" : "#{firstname} #{lastname}"
 	end
 end
