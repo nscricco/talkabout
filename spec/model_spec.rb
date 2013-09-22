@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'User' do
-	include FeatureSpec
+	include Spec
 
 	it 'should be invalid without an email and password' do
 		user = User.create
@@ -16,5 +16,10 @@ describe 'User' do
 	it 'should return a user\'s name as a full string' do
 		user = User.create(firstname: 'first', lastname: 'last', email: 'test@gmail.com', password: 'pass')
 		expect(user.name).to include 'first last'
+		User.destroy_all
 	end
+end
+
+describe 'Topic' do
+	include Spec
 end
