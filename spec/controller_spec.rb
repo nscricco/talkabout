@@ -55,8 +55,19 @@ end
 describe 'User Page' do
 	include Spec
 
+	let!(:user) {User.create(firstname: 'John', lastname: 'Doe', email: 'test@gmail.com', password: 'pass')}
+	let!(:topic) {Topic.create(title: 'title', body: 'topic_body', user: user)}
+
 	it 'should load' do
 		get "user/#{user.id}"
 		last_response.should be_ok
+	end
+	it 'should display the user\'s name' do
+		get "user/#{user.id}"
+		expect(last_response.body).to include user.name
+	end
+	it 'should display titles of topics authored by the user' do
+		get "user/#{user.id}"
+		expect(last_response.body).to include topic.title
 	end
 end
