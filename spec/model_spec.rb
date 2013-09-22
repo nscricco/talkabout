@@ -19,6 +19,10 @@ describe 'User' do
 		user = User.create(firstname: 'first', lastname: 'last', email: 'test@gmail.com', password: 'pass')
 		expect(user.name).to include 'first last'
 	end
+	it 'should return anonymous when a user does not have a name' do
+		user = User.create(email: 'test@gmail.com', password: 'pass')
+		expect(user.name).to include 'anonymous'
+	end
 
 	User.destroy_all
 end
