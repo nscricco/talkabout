@@ -5,3 +5,7 @@ get '/' do
 	@topics = Topic.all
 	erb :home
 end
+
+get '/topic/:title' do
+
+end

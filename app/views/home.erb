@@ -1,5 +1,6 @@
 <% @topics.each do |topic| %>
 	<p>
-		<b><%= topic.title %></b> <i>[<%= topic.user.name %>]</i>
+		<b><a href = "/topic/<%= topic.title %>"><%= topic.title %></a></b> 
+		<i>[<%= topic.user.name %>]</i>
 	</p>
 <% end %>
