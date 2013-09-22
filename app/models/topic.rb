@@ -1,0 +1,1 @@
+class Topic < ActiveRecord::Base
