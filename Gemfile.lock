@@ -26,6 +26,8 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.0)
       rack
+    rack-test (0.6.2)
+      rack (>= 1.0)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.4.3)
@@ -46,6 +48,7 @@ PLATFORMS
 
 DEPENDENCIES
   pg
+  rack-test
   shotgun
   sinatra
   sinatra-activerecord
