@@ -10,4 +10,10 @@ describe 'Homepage' do
 		get '/'
 		expect(last_response.body).to include topic.body
 	end
+	describe 'discussions' do
+		it 'should display the author' do
+			get '/'
+			expect(last_response.body).to include topic.user
+		end
+	end
 end
