@@ -50,6 +50,12 @@ describe 'Topic Page' do
 	it 'should display the comment author' do
 		expect(last_response.body).to include comment.user.name
 	end
+	it 'should link topic author to corresponding user page' do
+		expect(last_response.body).to include "\"/user/#{topic_user.id}\">#{topic.user.name}"
+	end
+	it 'should link comment author to corresponding user page' do
+		expect(last_response.body).to include "\"/user/#{comment_user.id}\">#{comment.user.name}"
+	end
 end
 
 describe 'User Page' do
