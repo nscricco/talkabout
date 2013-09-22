@@ -23,8 +23,6 @@ describe 'User' do
 		user = User.create(email: 'test@gmail.com', password: 'pass')
 		expect(user.name).to include 'anonymous'
 	end
-
-	User.destroy_all
 end
 
 describe 'Topic' do
@@ -52,9 +50,6 @@ describe 'Topic' do
 		topic = Topic.create(title: 'title', body: 'body', user: user)
 		expect(topic.user.email).to include 'test@gmail.com'
 	end
-
-	User.destroy_all
-	Topic.destroy_all
 end
 
 describe 'Comment' do
@@ -78,10 +73,6 @@ describe 'Comment' do
 	it 'should be valid with a topic, body, and user' do
 		comment = Comment.create(body: 'body', topic: topic, user: user)
 	end
-
-	User.destroy_all
-	Topic.destroy_all
-	Comment.destroy_all
 end
 
 describe 'Sub-Comment' do
@@ -95,9 +86,5 @@ describe 'Sub-Comment' do
 		comment = Comment.create(body: 'body', topic: topic, user: user, comment: parent_comment)
 		expect(comment.comment.body).to include 'parent comment body'
 	end
-
-	User.destroy_all
-	Topic.destroy_all
-	Comment.destroy_all
 end
 

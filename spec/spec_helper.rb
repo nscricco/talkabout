@@ -20,4 +20,12 @@ module Spec
 	def session
 		last_request.env['rack.session']
 	end
+
+	RSpec.configure do |config|
+		config.before do
+			User.destroy_all
+			Topic.destroy_all
+			Comment.destroy_all
+		end
+	end
 end
