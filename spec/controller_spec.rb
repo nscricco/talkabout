@@ -8,7 +8,7 @@ describe 'Homepage' do
 
 	it 'should load' do
 		get '/'
-		last_response.status.should be_ok
+		last_response.should be_ok
 	end
 	it 'should show list of discussions' do
 		get '/'
