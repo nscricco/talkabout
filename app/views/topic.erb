@@ -1,6 +1,6 @@
-<b><%= @topic.title %></b> <i>[<%= erb :_name %>]</i>
+<b><%= @topic.title %></b> <i>[<% @user = @topic.user %><%= erb :_name %>]</i>
 <p><%= @topic.body %></p><br>
 
 <% @topic.comments.each do |comment| %>
-	<p><i><%= comment.user.name %></i><br><%= comment.body %></p>
+	<p><i><%@user = comment.user %><%= erb :_name %></i><br><%= comment.body %></p>
 <% end %>
