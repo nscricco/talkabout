@@ -6,6 +6,10 @@ describe 'Homepage' do
 	let!(:user) {User.create(email: 'test@gmail.com', password: 'pass')}
 	let!(:topic) {Topic.create(title: 'title', body: 'body', user: user)}
 
+	it 'should load' do
+		get '/'
+		last_response.status.should be_ok
+	end
 	it 'should show list of discussions' do
 		get '/'
 		expect(last_response.body).to include topic.title
