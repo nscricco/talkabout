@@ -51,3 +51,12 @@ describe 'Topic Page' do
 		expect(last_response.body).to include comment.user.name
 	end
 end
+
+describe 'User Page' do
+	include Spec
+
+	it 'should load' do
+		get "user/#{user.id}"
+		last_response.should be_ok
+	end
+end
