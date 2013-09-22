@@ -8,12 +8,16 @@ describe 'Homepage' do
 
 	it 'should show list of discussions' do
 		get '/'
-		expect(last_response.body).to include topic.body
+		expect(last_response.body).to include topic.title
 	end
 	describe 'discussions' do
 		it 'should display the author' do
 			get '/'
-			expect(last_response.body).to include topic.user
+			expect(last_response.body).to include topic.user.name
 		end
 	end
+
+	User.destroy_all
+	Topic.destroy_all
+	Comment.destroy_all
 end
