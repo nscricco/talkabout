@@ -6,7 +6,7 @@ require_relative 'models/comment'
 require_relative 'talkabout'
 
 if settings.test?
-	set :database, 'sqlite3:///db/talkabout'
+	set :database, 'sqlite3:///db/talkabout.sqlite3'
 else
 	configure :development do
 		set :database, 'sqlite3:///mydb.sqlite3'
