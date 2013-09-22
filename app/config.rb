@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-require_relative 'talkabout.rb'
+require_relative 'models/user'
+require_relative 'models/topic'
+require_relative 'models/comment'
+require_relative 'talkabout'
 
 if settings.test?
 	set :database, 'sqlite3:///db/talkabout'
