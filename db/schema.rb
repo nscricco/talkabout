@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 3) do
     t.string  "body"
     t.integer "topic_id"
     t.integer "comment_id"
+    t.integer "user_id"
   end
 
   create_table "topics", force: true do |t|
