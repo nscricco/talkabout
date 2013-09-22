@@ -1,3 +1,5 @@
+<b><%= @user.name %></b> <i>[<%= @user.email %>]</i>
+
 <% @user.topics.each do |topic| %>
-	<p><b><%= topic.title %></b></p>
+	<p><%= topic.title %></p>
 <% end %>

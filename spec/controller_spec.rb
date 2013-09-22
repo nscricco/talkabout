@@ -66,6 +66,10 @@ describe 'User Page' do
 		get "user/#{user.id}"
 		expect(last_response.body).to include user.name
 	end
+	it 'should display the user\'s email' do
+		get "user/#{user.id}"
+		expect(last_response.body).to include user.email
+	end
 	it 'should display titles of topics authored by the user' do
 		get "user/#{user.id}"
 		expect(last_response.body).to include topic.title
