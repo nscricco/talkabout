@@ -29,15 +29,15 @@ describe 'Topic' do
 	user = User.create(email: 'test@gmail.com', password: 'pass')
 
 	it 'should be invalid without a title' do
-		topic = Topic.create
+		topic = Topic.create(body: 'body', user: user)
 		expect(topic).not_to be_valid
 	end
 	it 'should be invalid without a body' do
-		topic = Topic.create
+		topic = Topic.create(title: 'title', user: user)
 		expect(topic).not_to be_valid
 	end
 	it 'should be invalid without a user' do
-		topic = Topic.create
+		topic = Topic.create(title: 'title', body: 'body')
 		expect(topic).not_to be_valid
 	end
 	it 'should be valid with a title, body, and user' do
@@ -48,4 +48,40 @@ describe 'Topic' do
 		topic = Topic.create(title: 'title', body: 'body', user: user)
 		expect(topic.user.email).to include 'test@gmail.com'
 	end
+
+	User.destroy_all
+	Topic.destroy_all
 end
+
+describe 'Comment' do
+	include Spec
+
+	user = User.create(email: 'test@gmail.com', password: 'pass')
+	topic = Topic.create(title: 'title', body: 'body', user: user)
+
+	it 'should be invalid without a topic' do
+		comment = Comment.create(body: 'body', user: user)
+		expect(topic).not_to be_valid
+	end
+	it 'should be invalid without a body' do
+		comment = Comment.create(topic: topic, user: user)
+		expect(topic).not_to be_valid
+	end
+	it 'should be invalid without a user' do
+		comment = Comment.create(body: 'body', topic: topic)
+		expect(topic).not_to be_valid
+	end
+	it 'should be valid with a topic, body, and user' do
+		comment = Comment.create(body: 'body', topic: topic, user: user)
+	end
+
+	User.destroy_all
+	Topic.destroy_all
+	Comment.destroy_all
+end
+
+describe 'Sub-Comment' do
+	it 'should be invalid without a user'
+	it 'should be invalid without a parent comment'
+end
+
