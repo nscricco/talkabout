@@ -19,11 +19,14 @@ describe 'User' do
 		user = User.create(firstname: 'first', lastname: 'last', email: 'test@gmail.com', password: 'pass')
 		expect(user.name).to include 'first last'
 	end
+
 	User.destroy_all
 end
 
 describe 'Topic' do
 	include Spec
 
-	it 'should be invalid without a title'
+	it 'should be invalid without a title' do
+		
+	end
 end

@@ -1,2 +1,2 @@
-require './app/talkabout'
+require './app/controller'
 run Sinatra::Application
