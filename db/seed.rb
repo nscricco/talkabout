@@ -1,7 +1,7 @@
 require 'faker'
 require_relative '../app/config.rb'
 
-class Seeder
+class Seed
 	def create_user
 		user = User.create(
 			firstname: Faker::Name.first_name,
@@ -28,15 +28,11 @@ class Seeder
 	end
 end
 
-mySeeder = Seeder.new
+seeder = Seed.new
 
-10.times do
-	user = mySeeder.create_user
-	3.times do
-		topic = mySeeder.create_topic(user)
-		5.times do
-			comment = mySeeder.create_comment(user, topic)
-		end
-	end
+users = []
+60.times { users << seeder.create_user }
+30.times do
+	topic = seeder.create_topic(users.sample)
+	5.times { seeder.create_comment(users.sample, topic) }
 end
-	
