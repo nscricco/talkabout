@@ -1,0 +1,5 @@
+<b><%= @user.name %></b> <i>[<%= @user.email %>]</i>
+
+<% @user.topics.each do |topic| %>
+	<p><%= topic.title %></p>
+<% end %>

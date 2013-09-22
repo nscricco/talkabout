@@ -1,4 +1,4 @@
-<b><%= @topic.title %></b> <i>[<%= @topic.user.name %>]</i>
+<b><%= @topic.title %></b> <i>[<%= erb :name %>]</i>
 <p><%= @topic.body %></p><br>
 
 <% @topic.comments.each do |comment| %>
