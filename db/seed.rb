@@ -36,7 +36,3 @@ users = []
 	topic = seeder.create_topic(users.sample)
 	5.times { seeder.create_comment(users.sample, topic) }
 end
-
-	end
-end
-	
