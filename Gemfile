@@ -9,6 +9,7 @@ gem 'rack-test'
 group :development do
 	gem 'shotgun'
 	gem 'sqlite3'	
+	gem 'faker'
 end
 
 group :production do
