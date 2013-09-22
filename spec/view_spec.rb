@@ -6,6 +6,10 @@ describe 'Homepage' do
 	let!(:user) {User.create(email: 'test@gmail.com', password: 'pass')}
 	let!(:topic) {Topic.create(title: 'title', body: 'body', user: user)}
 
+	before :each do
+		get '/'
+	end
+
 	it 'should show list of discussions' do
 		expect(last_response.body).to include topic.title
 	end
@@ -14,7 +18,10 @@ describe 'Homepage' do
 			expect(last_response.body).to include topic.user.name
 		end
 		it 'should link to the discussion page' do
-			last_response.should link_to(href: "topic/#{topic.title}")
+			expect(last_response.body).to include "\"/topic/#{topic.title}\">#{topic.title}"
+		end
+		it 'should link author to the user page' do
+			expect(last_response.body).to include "\"/user/#{user.id}\">#{topic.user.name}"
 		end
 	end
 end
